@@ -8,8 +8,8 @@ int main() {
 	int t; //t : test cases
 	cin >> t;
 	for (int i = 0; i < t; i++) {
-		int cnt = 0; //cnt : ¾Ë¶÷ È½¼ö
-		int n, d; //n : ÃÑ ³¯ Â¥ ¼ö, d : °í·ÁÇÒ ÁöÃâ ¹üÀ§ÀÏ
+		int cnt = 0; //cnt : ì•ŒëŒ íšŸìˆ˜
+		int n, d; //n : ì´ ë‚  ì§œ ìˆ˜, d : ê³ ë ¤í•  ì§€ì¶œ ë²”ìœ„ì¼
 		cin >> n >> d;
 		//save expenditure by day
 		int* expenDay = new int[n + 1];
@@ -20,18 +20,18 @@ int main() {
 		for (int j = 1; j <= n; j++) {
 			cin >> expenDay[j];
 
-			//¾ÆÁ÷ °í·Á ÁöÃâ ¹üÀ§ÀÏ ÀÌÀüÀÌ¸é continue
+			//ì•„ì§ ê³ ë ¤ ì§€ì¶œ ë²”ìœ„ì¼ ì´ì „ì´ë©´ continue
 			if (j < d + 1) {
 				expenCnt[expenDay[j]]++;
 				continue;
 			}
-			//°í·Á ÁöÃâ ¹üÀ§ ÀÌÈÄ ÀÏ ¶§
+			//ê³ ë ¤ ì§€ì¶œ ë²”ìœ„ ì´í›„ ì¼ ë•Œ
 			else {
-				//ÁöÃâÀÌ Áß¾Ó°ªÀÇ µÎ ¹è ÀÌ»óÀÌ¸é ¾Ë¶÷ Ä«¿îÆ® Ãß°¡
+				//ì§€ì¶œì´ ì¤‘ì•™ê°’ì˜ ë‘ ë°° ì´ìƒì´ë©´ ì•ŒëŒ ì¹´ìš´íŠ¸ ì¶”ê°€
 				if (median(expenDay[j], d, expenCnt) == true) 
 					cnt++;
 			}
-			//¿À·¡µÈ ÁöÃâ ¹üÀ§ ³»ÀÇ °ª ÁÙÀÌ°í »õ·Î¿î °ª Ãß°¡
+			//ì˜¤ë˜ëœ ì§€ì¶œ ë²”ìœ„ ë‚´ì˜ ê°’ ì¤„ì´ê³  ìƒˆë¡œìš´ ê°’ ì¶”ê°€
 			expenCnt[expenDay[j - d]]--;
 			expenCnt[expenDay[j]]++;
 		}
@@ -39,10 +39,10 @@ int main() {
 	}
 }
 
-//ÁöÃâÀÌ Áß¾Ó°ªÀÇ µÎ ¹è ÀÌ»óÀÌ¸é True ¸®ÅÏ
+//ì§€ì¶œì´ ì¤‘ì•™ê°’ì˜ ë‘ ë°° ì´ìƒì´ë©´ True ë¦¬í„´
 bool median(int expen, int d, int* expenCnt) {
-	int cnt = 0; //´©Àû Ä«¿îÆ® ¼¼±â
-	//d°¡ È¦¼öÀÏ ¶§
+	int cnt = 0; //ëˆ„ì  ì¹´ìš´íŠ¸ ì„¸ê¸°
+	//dê°€ í™€ìˆ˜ì¼ ë•Œ
 	if (d % 2 == 1) {
 		for (int i = 0; i < 201; i++) {
 			cnt += expenCnt[i];
@@ -52,26 +52,26 @@ bool median(int expen, int d, int* expenCnt) {
 			}
 		}
 	}
-	//d°¡ Â¦¼öÀÏ ¶§
+	//dê°€ ì§ìˆ˜ì¼ ë•Œ
 	else {
 		for (int i = 0; i < 201; i++) {
 			int save = 0;
 			cnt += expenCnt[i];
 			if (cnt >= d / 2) {
-				//Áß°£°ªÀÌ ¿¬¼ÓÀÎ ¼ıÀÚ »çÀÌ¿¡ ¾øÀ» ¶§
+				//ì¤‘ê°„ê°’ì´ ì—°ì†ì¸ ìˆ«ì ì‚¬ì´ì— ì—†ì„ ë•Œ
 				//ex) 1 2 <3> <4> 5 6
 				if (cnt == d / 2) {
-					//Áß°£°ª ¹Ù·Î Á÷Àü ¼ıÀÚ ÀúÀåÇÏ°í ÄÁÆ¼´º
+					//ì¤‘ê°„ê°’ ë°”ë¡œ ì§ì „ ìˆ«ì ì €ì¥í•˜ê³  ì»¨í‹°ë‰´
 					save = i;
 					continue;
 				}
 				else if (save != 0) {
-					//Áß°£°ª ¹Ù·Î Á÷Àü ¼ıÀÚ¿Í ´ÙÀ½ ¼ıÀÚ ´õÇÑ °ªÀÇ 2¹è ÀÌ»ó µÇ´ÂÁö È®ÀÎ
+					//ì¤‘ê°„ê°’ ë°”ë¡œ ì§ì „ ìˆ«ìì™€ ë‹¤ìŒ ìˆ«ì ë”í•œ ê°’ì˜ 2ë°° ì´ìƒ ë˜ëŠ”ì§€ í™•ì¸
 					//as int((double(save + i) / 2) * 2) == save + i
 					if (expen >= save + i) return true;
 					else return false;
 				}
-				//Áß°£°ªÀÌ ¿¬¼ÓÀÎ ¼ıÀÚ »çÀÌ¿¡ ÀÖÀ» ¶§
+				//ì¤‘ê°„ê°’ì´ ì—°ì†ì¸ ìˆ«ì ì‚¬ì´ì— ìˆì„ ë•Œ
 				//ex) 1 2 <2> <2> 3 4
 				else {
 					if (expen >= 2 * i) return true;
@@ -80,5 +80,5 @@ bool median(int expen, int d, int* expenCnt) {
 			}
 		}
 	}
-	return false; //ÀÇ¹Ì ¾øÀ½
+	return false; //ì˜ë¯¸ ì—†ìŒ
 }
