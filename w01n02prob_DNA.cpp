@@ -20,7 +20,7 @@ int main() {
 }
 
 void hamming() {
-	int m, n; //m : Á¾ÀÇ ¼ö n : À¯ÀüÀÚ ±æÀÌ
+	int m, n; //m : ì¢…ì˜ ìˆ˜ n : ìœ ì „ìž ê¸¸ì´
 	cin >> m >> n;
 	string* dna = new string[m];
 	for (int i = 0; i < m; i++) {
@@ -32,7 +32,7 @@ void hamming() {
 	string repre_str;
 
 	for (int i = 0; i < n; i++) {
-		//°¢°¢ÀÇ ¿°±â Á¤º¸ ´ã±ä ±¸Á¶Ã¼ »ý¼º
+		//ê°ê°ì˜ ì—¼ê¸° ì •ë³´ ë‹´ê¸´ êµ¬ì¡°ì²´ ìƒì„±
 		nucleotide a = { 'A', 0, false };
 		nucleotide t = { 'T', 0, false };
 		nucleotide g = { 'G', 0, false };
@@ -63,7 +63,7 @@ void hamming() {
 		sum += m - repre.cnt;
 	}
 	
-	//´ëÇ¥ ¼­¿­ Ãâ·Â
+	//ëŒ€í‘œ ì„œì—´ ì¶œë ¥
 	/*for (int i = 0; i < n; i++) {
 		cout << repre[i].cha;
 	}*/
