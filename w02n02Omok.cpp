@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string.h>
 using namespace std;
 
 
@@ -7,22 +8,31 @@ int board[16][16]; //오목판 위 오목 위치 저장
 int check[16][16]; //dfs에서 지나간 노드인지 체크
 
 void dfs(int, int, int, int&, int direc);
+void omok();
 
-int main(){
+int main() {
 	std::ios::sync_with_stdio(false);
 	int t;
 	cin >> t;
 	for (int i = 0; i < t; i++) {
+		//memset(board, 0, sizeof(board));
+		omok();
+	}
 
-		bool isAns = false;
-		char winner = 0;
-		int ans = 0;
+	return 0;
+}
 
-		for (int j = 1; j <= 225; j++) {
-			int x, y;
-			cin >> x >> y;
-			//이미 승자가 있으면 continue
-			if (isAns == true) continue;
+void omok() {
+	bool isAns = false;
+	char winner = 0;
+	int ans = 0;
+
+	for (int j = 1; j <= 225; j++) {
+		int x, y;
+		cin >> x >> y;
+		//이미 승자가 있으면 continue
+		//if (isAns == true) continue;
+		if (isAns == false) {
 			//검정이 둘 때
 			if (j % 2 == 1) {
 				int cnt = 0;
@@ -58,13 +68,12 @@ int main(){
 				}
 			}
 		}
-		//---***제출 전에 수정하자***---
-	     cout << "                    " << ans << " " << winner << "\n";
-		//cout << ans << winner << "\n";
-		memset(board, 0, sizeof(board));
 	}
-	
-	return 0;
+	//---***제출 전에 수정하자***---
+	//cout << "                    " << ans << " " << winner << "\n";
+	cout << ans << winner << "\n";
+	memset(board, 0, sizeof(board));
+	return;
 }
 
 
@@ -114,5 +123,5 @@ void dfs(int x, int y, int BorW, int& cnt, int direc) {
 			dfs(x - 1, y + 1, BorW, cnt, 3);
 		}
 	}
-	return;	
+	return;
 }
