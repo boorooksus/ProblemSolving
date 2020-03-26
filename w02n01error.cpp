@@ -56,4 +56,4 @@ string encording(int m, int n, string cordwords[], int o, string original) {
 }
 
 
-//¸¶Áö¸·¿¡ ¾Æ½ºÅ°ÄÚµå ÅëÇØ¼­ ¹è¿­ ÀÎµ¦½º¸¦ ¾ËÆÄºªÀ¸·Î º¯È¯½ÃÅ°ÀÚ!
+//ë§ˆì§€ë§‰ì— ì•„ìŠ¤í‚¤ì½”ë“œ í†µí•´ì„œ ë°°ì—´ ì¸ë±ìŠ¤ë¥¼ ì•ŒíŒŒë²³ìœ¼ë¡œ ë³€í™˜ì‹œí‚¤ìž!
