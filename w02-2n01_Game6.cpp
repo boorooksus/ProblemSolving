@@ -18,7 +18,7 @@ int main() {
 		int n; //n : number of items
 		cin >> n;
 		item* items = new item[n + 1];
-		//latest : °¡Àå ¸¶Áö¸·¿¡ °³¹ß ½ÃÀÛÇÏÇÏ´Â ¾ÆÀÌÅÛ ½ÃÀÛÀÏ
+		//latest : ê°€ì¥ ë§ˆì§€ë§‰ì— ê°œë°œ ì‹œì‘í•˜í•˜ëŠ” ì•„ì´í…œ ì‹œì‘ì¼
 		int latest = 0;
 		for (int j = 1; j <= n; j++) {
 			string name;
@@ -29,12 +29,12 @@ int main() {
 				latest = start;
 			}
 		}
-		//dynamic : start ÀÎÀÚ¿¡ µû¸¥ dfsÇÔ¼ö °ª ÀúÀå
+		//dynamic : start ì¸ìì— ë”°ë¥¸ dfsí•¨ìˆ˜ ê°’ ì €ì¥
 		//int* dynamic = new int[deadline + 1];
 		int dynamic[10001];
 		//fill_n(dynamic, deadline + 1, 0);
 		fill_n(dynamic, 10001, 0);
-		//Ãâ·Â
+		//ì¶œë ¥
 		//cout << "============================" << dfs(items, 0, n, deadline, dynamic) << "\n";
 		cout << dfs(items, 0, n, latest, dynamic) << "\n";
 	}
@@ -43,7 +43,7 @@ int main() {
 }
 
 int dfs(item items[], int start, int n, int latest, int dynamic[]) {
-	//ÀÌ¹Ì °è»êµÇ¾î ÀÖÀ¸¸é ¸®ÅÏ
+	//ì´ë¯¸ ê³„ì‚°ë˜ì–´ ìˆìœ¼ë©´ ë¦¬í„´
 	if (dynamic[start] != 0) {
 		return dynamic[start];
 	}
