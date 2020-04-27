@@ -30,7 +30,7 @@ void team(int n, int desig[]) {
 		stack<int> s;
 		int cur = i;
 		bool cycle = false;
-		//¹«ÇÑ ¹Ýº¹ ¹æÁö À§ÇØ ¹Ýº¹ Á¦ÇÑ °É¾îµÒ 
+		//ë¬´í•œ ë°˜ë³µ ë°©ì§€ ìœ„í•´ ë°˜ë³µ ì œí•œ ê±¸ì–´ë‘  
 		for (int j = 0; j < n + 1; j++) {
 			int next = desig[cur];
 			if (next == i) {
