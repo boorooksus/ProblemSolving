@@ -6,17 +6,17 @@
 #include <cmath>
 using namespace std;
 
-char maze[20][20]; //°¢ ¹æÀÇ ¹®ÀÚ ÀúÀå
-bool visit[20][20][64]; //°¢ ¹æÀÇ ¹æ¹® ¿©ºÎ ÀúÀå(°¡Áö°í ÀÖ´Â Å°¿¡ µû¶ó ÀúÀå)
+char maze[20][20]; //ê° ë°©ì˜ ë¬¸ìž ì €ìž¥
+bool visit[20][20][64]; //ê° ë°©ì˜ ë°©ë¬¸ ì—¬ë¶€ ì €ìž¥(ê°€ì§€ê³  ìžˆëŠ” í‚¤ì— ë”°ë¼ ì €ìž¥)
 
-//µé¾î°¥ ¼ö ÀÖ´Â Àá±ä ¹æÀÎÁö È®ÀÎ
+//ë“¤ì–´ê°ˆ ìˆ˜ ìžˆëŠ” ìž ê¸´ ë°©ì¸ì§€ í™•ì¸
 bool open(int lock, int key) {
 	int temp = pow(10, lock);
 	if ((key / temp) % 10 == 1) return true;
 	else return false;
 }
 
-//sc, sr : ½ÃÀÛ ÁöÁ¡, m, n : ¹Ì·Î Å©±â, card : Ã£¾Æ¾ßÇÏ´Â Å°
+//sc, sr : ì‹œìž‘ ì§€ì , m, n : ë¯¸ë¡œ í¬ê¸°, card : ì°¾ì•„ì•¼í•˜ëŠ” í‚¤
 int bfs(int sc, int sr, int m, int n, int card) {
 	int dx[4] = { 1, -1, 0, 0 };
 	int dy[4] = { 0, 0, 1, -1 };
@@ -39,21 +39,21 @@ int bfs(int sc, int sr, int m, int n, int card) {
 				nx = cx + dx[j];
 				if (ny >= 0 && ny < m && nx >= 0 && nx < n
 					&& visit[ny][nx][ck] != true && maze[ny][nx] != '#') {
-					//Àá±ä ¹æÀÎ °æ¿ì
+					//ìž ê¸´ ë°©ì¸ ê²½ìš°
 					if (maze[ny][nx] > 64 && maze[ny][nx] < 91) {
-						//Àá±Ý ÇØÁ¦ ¸øÇÏ¸é continue
+						//ìž ê¸ˆ í•´ì œ ëª»í•˜ë©´ continue
 						if (!open(maze[ny][nx] - 65, ck)) {
 							continue;
 						}
-						//Àá±Ý ÇØÁ¦ °¡´ÉÇÏ¸é ¹æ¹®ÇÏ°í Å¥¿¡ »ðÀÔ
+						//ìž ê¸ˆ í•´ì œ ê°€ëŠ¥í•˜ë©´ ë°©ë¬¸í•˜ê³  íì— ì‚½ìž…
 						else {
 							visit[ny][nx][ck] = true;
 							q.push(make_pair(make_pair(ny, nx), ck));
 						}
 					}
-					//Å°°¡ ÀÖ´Â ¹æÀÇ °æ¿ì
+					//í‚¤ê°€ ìžˆëŠ” ë°©ì˜ ê²½ìš°
 					else if (maze[ny][nx] > 96) {
-						//ÀÌ¹Ì °¡Áö°í ÀÖ´Â Å°ÀÎÁö È®ÀÎ(È®ÀÎ ¾ÈÇÏ¸é Áßº¹À¸·Î ´õÇØÁ®¼­ mask°¡ ÀÌÁø¹ýÀ¸·Î ¾È³ª¿Ã ¼öµµ ÀÖÀ½)
+						//ì´ë¯¸ ê°€ì§€ê³  ìžˆëŠ” í‚¤ì¸ì§€ í™•ì¸(í™•ì¸ ì•ˆí•˜ë©´ ì¤‘ë³µìœ¼ë¡œ ë”í•´ì ¸ì„œ maskê°€ ì´ì§„ë²•ìœ¼ë¡œ ì•ˆë‚˜ì˜¬ ìˆ˜ë„ ìžˆìŒ)
 						int temp = pow(10, maze[ny][nx] - 97);
 						if ((ck / temp) % 10 == 0) {
 							nk = ck + temp;
