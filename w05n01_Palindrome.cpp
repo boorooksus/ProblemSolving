@@ -1,40 +1,47 @@
 #include <iostream>
 #include <string>
-#include <stack>
 using namespace std;
 
-bool Palindrome(string word) {
-	stack<char> s;
-	string convert;
-	for (int i = 0; i < word.size(); i++) {
-		if (word[i] > 64 && word[i] < 91) {
-			convert += word[i];
-			s.push(word[i]);
+string word;
+
+string palindrome() {
+	int sp = 0;
+	int ep = word.length() - 1;
+
+	while (sp < ep) {
+		if (word[sp] >= 'a' && word[sp] <= 'z') {
+			word[sp] -= 'a' - 65;
 		}
-		else if (word[i] > 96 && word[i] < 123) {
-			convert += word[i] - 32;
-			s.push(word[i] - 32);
+		else if (word[sp] < 'A' || word[sp] > 'Z') {
+			sp++;
+			continue;
 		}
+
+		if (word[ep] >= 'a' && word[ep] <= 'z') {
+			word[ep] -= 'a' - 65;
+		}
+		else if (word[ep] < 'A' || word[ep] > 'Z') {
+			ep--;
+			continue;
+		}
+
+		if (word[sp] != word[ep]) {
+			return "No";
+		}
+
+		sp++;
+		ep--;
 	}
-	for (int i = 0; i < s.size(); i++) {
-		if (s.top() != convert[i]) {
-			return false;
-		}
-		else {
-			s.pop();
-		}
-	}
-	return true;
+
+	return "Yes";
 }
 
 int main() {
-	std::ios::sync_with_stdio(false);
+	ios::sync_with_stdio(false);
 	int T;
 	cin >> T;
-	for (int i = 0; i < T; i++) {
-		string word;
+	while (T--) {
 		cin >> word;
-		if (Palindrome(word)) cout << "Yes\n";
-		else cout << "No\n";
+		cout << palindrome() << "\n";
 	}
 }
