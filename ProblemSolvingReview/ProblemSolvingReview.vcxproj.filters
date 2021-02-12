@@ -21,5 +21,8 @@
     <ClCompile Include="w01n02.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="w02n03_Error.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
