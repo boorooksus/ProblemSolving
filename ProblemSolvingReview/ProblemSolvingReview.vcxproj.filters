@@ -21,10 +21,13 @@
     <ClCompile Include="w01n02.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="w02n03_Error.cpp">
+    <ClCompile Include="w02n03_MinString.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="w02n04_Omok.cpp">
+    <ClCompile Include="w02n02_Omok.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="w02n01_Error.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
